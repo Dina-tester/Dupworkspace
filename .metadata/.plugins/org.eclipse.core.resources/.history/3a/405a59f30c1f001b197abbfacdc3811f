@@ -1,0 +1,28 @@
+package pom.in;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+import Base.in.BaseClass;
+
+public class Taskpage extends BaseClass {
+	public Taskpage() {
+		PageFactory.initElements(driver, this);
+	}
+	
+	
+	@FindBy(xpath = "//a[@href='/tasks']")	
+	private static WebElement Task;
+
+
+	public static WebElement getTask() {
+		return Task;
+	}
+		
+		
+		
+		
+	
+	}
+

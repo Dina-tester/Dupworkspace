@@ -1,0 +1,40 @@
+package Steps.in;
+
+	import org.testng.Assert;
+	import org.testng.annotations.BeforeMethod;
+
+	import Base.in.BaseClass;
+	import cucumber.api.java.en.*;
+	import pom.in.LoginPage;
+
+	public class Steps extends BaseClass {
+		
+		@BeforeMethod
+		@Given("I am in Cogmento CRM Login Page")
+		public void i_am_in_Cogmento_CRM_Login_Page() {
+			launchBrowser();
+			launchUrl("https://ui.freecrm.com/");
+			String LoginPageUrl = driver.getCurrentUrl();
+			Assert.assertEquals("https://ui.freecrm.com/", LoginPageUrl);
+		}
+		
+		@When("I enter valid username and Password")
+		public void i_enter_valid_username_and_Password() throws Throwable {
+			LoginPage login = new LoginPage();
+			Thread.sleep(4000);
+
+			String Username = readfromExcel(1, 0,"Loginsheet");
+			filltxtbox(login.getName(), Username);
+
+			String Password = readfromExcel(1, 1,"Loginsheet");
+			filltxtbox(login.getPassword(), Password);
+
+			bclick(login.getLoginButton());
+		}
+
+		@Then("I will be in Cogmento CRM HomePage")
+		public void i_will_be_in_Cogmento_CRM_HomePage() {
+			String title = driver.getTitle();
+			Assert.assertTrue(title.equals("Cogmento CRM"));
+		}
+}

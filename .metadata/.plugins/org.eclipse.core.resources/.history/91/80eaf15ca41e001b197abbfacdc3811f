@@ -1,0 +1,12 @@
+package pom.in;
+
+import org.openqa.selenium.support.PageFactory;
+
+import Base.in.BaseClass;
+
+public class Taskpage extends BaseClass {
+	public Taskpage() {
+		PageFactory.initElements(driver, this);
+	
+	}
+}

@@ -1,0 +1,9 @@
+Feature: Validating Cogmento CRM Login Page
+
+  Scenario: Validating username and Password field using Postive TestData's
+    			
+    			   			
+    Given Verify User is in Cogmento CRM Login Page
+    When  To enter valid username and Password
+    Then  Verify the user Cogmento CRM HomePage
+

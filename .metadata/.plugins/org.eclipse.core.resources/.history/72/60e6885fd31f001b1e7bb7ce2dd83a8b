@@ -1,0 +1,131 @@
+package Steps.in;
+
+import java.time.Duration;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
+
+import Base.in.BaseClass;
+import cucumber.api.java.en.*;
+import pom.in.LoginPage;
+import pom.in.Taskpage;
+
+public class Stepdefinition extends BaseClass {
+
+	@BeforeMethod
+	@Given("I am in Cogmento CRM Login Page")
+	public void i_am_in_Cogmento_CRM_Login_Page() {
+		launchBrowser();
+		launchUrl("https://ui.freecrm.com/");
+		String LoginPageUrl = driver.getCurrentUrl();
+		Assert.assertEquals("https://ui.freecrm.com/", LoginPageUrl);
+	}
+
+	@When("I enter valid username and Password")
+	public void i_enter_valid_username_and_Password() throws Throwable {
+		LoginPage login = new LoginPage();
+		Thread.sleep(4000);
+
+		String Username = readfromExcel(1, 0, "Loginsheet");
+		filltxtbox(login.getName(), Username);
+
+		String Password = readfromExcel(1, 1, "Loginsheet");
+		filltxtbox(login.getPassword(), Password);
+
+		bclick(login.getLoginButton());
+	}
+
+	@Then("Verify the user Cogmento CRM HomePage")
+	public void verify_the_user_Cogmento_CRM_HomePage() throws Throwable {
+		String title = driver.getTitle();
+		Assert.assertTrue(title.equals("Cogmento CRM"));
+		close();
+	}
+
+	@When("I Enter invalid Username and Password")
+	public void i_Enter_invalid_Username_and_Password() throws Throwable {
+		LoginPage login = new LoginPage();
+		Thread.sleep(1000);
+
+		String Username = readfromExcel(2, 0, "Loginsheet");
+		filltxtbox(login.getName(), Username);
+
+		String Password = readfromExcel(2, 1, "Loginsheet");
+		filltxtbox(login.getPassword(), Password);
+
+		bclick(login.getLoginButton());
+	}
+
+	@Then("I will be in Cogmento CRM HomePage")
+	public void i_will_be_in_Cogmento_CRM_HomePage() throws Throwable {
+		LoginPage login = new LoginPage();
+		Thread.sleep(2000);
+		WebElement failerrmsg = login.getInvalidlogin();
+		String text = failerrmsg.getText();
+		Assert.assertEquals(text, "Invalid login");
+		close();
+		
+	}
+	
+	@When("I click on Task tab and create new task")
+	public void i_click_on_Task_tab_and_create_new_task() throws Throwable {
+		LoginPage login = new LoginPage();Taskpage task=new Taskpage();	
+		filltxtbox(login.getName(), "dlgcdina@gmail.com");
+		filltxtbox(login.getPassword(), "Dinesh@01");
+		bclick(login.getLoginButton());
+		Thread.sleep(2000);	bclick(task.getTask());
+		WebElement newTaskButton = task.getNewTask();bclick(newTaskButton);
+		Thread.sleep(2000);
+		
+		String title = readfromExcel(1, 0, "Taskdetails");
+		filltxtbox(task.getTitle(), title);
+		
+		String assignedTo = readfromExcel(1, 1, "Taskdetails");
+		filltxtbox(task.getAssignedTo(), assignedTo);
+		
+		
+		/*
+		 * String dueDate = readfromExcel(1, 2, "Taskdetails");
+		 * filltxtbox(task.getDueDate(),dueDate);
+		 */
+		  
+		/*
+		 * String closedate = excelvalues(1, 3, "Taskdetails");
+		 * filltxtbox(task.getDueDate(), closedate); Thread.sleep(1000);
+		 */
+		 bclick(task.getDueDate());
+		 
+		  
+		/*
+		 * String contactno = readfromExcel(1, 4, "Taskdetails");
+		 * filltxtbox(task.getContactno(), contactno);
+		 */
+		
+		String description = readfromExcel(1, 5, "Taskdetails");
+		filltxtbox(task.getDescription(), description);
+		
+		//filltxtbox(fill, input);
+		
+		/*
+		 * WebElement taskfiled =
+		 * driver.findElement(By.xpath("//input[@name='title']"));
+		 * 
+		 * 
+		 * Thread.sleep(2000); WebElement assignedTo = driver.findElement(By.
+		 * xpath("(//*[text()='Assigned To']//following-sibling::div[@role='listbox'])")
+		 * ); //dropdownValue(assignedTo,"Dinesh L"); //dropdown(assignedTo, 0);
+		 * assignedTo.sendKeys("Dinesh L");
+		 */
+		
+		
+		
+		
+		
+	}
+}

@@ -1,0 +1,53 @@
+package pom.in;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+import Base.in.BaseClass;
+
+public class Taskpage extends BaseClass {
+	public Taskpage() {
+		PageFactory.initElements(driver, this);
+	}
+	
+	
+	@FindBy(xpath = "//a[@href='/tasks']")	
+	private static WebElement Task;
+	
+	@FindBy(xpath = "//button[@class='ui linkedin button']//parent::a[@href='/tasks/new']")	
+	private  WebElement NewTask;
+	
+	@FindBy(xpath = "//input[@name='title']")
+	private  WebElement Title;
+	
+	
+	@FindBy(xpath = "(//*[text()='Assigned To']//following-sibling::div[@role='listbox'])")
+	private  WebElement AssignedTo;
+	
+	@FindBy(xpath = "(//div[@class='react-datepicker__input-container']//input[@type='text'])[1]")
+	private  WebElement DueDate;
+	
+	
+	@FindBy(xpath = "//input[@name='title']")
+	private  WebElement Title;
+	
+	@FindBy(xpath = "//input[@name='title']")
+	private  WebElement Title;
+	
+	
+	
+	
+
+	public WebElement getTask() {
+		return Task;
+	}
+	public WebElement getNewTask() {
+		return NewTask;
+	}
+		
+	
+		
+	
+	}
+

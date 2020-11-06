@@ -1,0 +1,7 @@
+Feature: Validating Cogmento CRM Login Page
+
+  Scenario: Verfiy username and Password field using Postive
+    			and Negative TestData
+    			
+    
+

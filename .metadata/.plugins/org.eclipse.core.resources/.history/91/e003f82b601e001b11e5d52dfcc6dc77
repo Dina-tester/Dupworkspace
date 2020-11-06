@@ -1,0 +1,17 @@
+package TestRunner.in;
+
+import org.junit.runner.RunWith;
+
+import cucumber.api.CucumberOptions;
+import cucumber.api.junit.Cucumber;
+
+@RunWith(Cucumber.class)
+@CucumberOptions(features = { "src\\test\\resources" }, glue = {
+		"Stepdefinition.in" }, monochrome = true, dryRun = false,
+
+		plugin = {"pretty","html:target\\ht.html"},
+tags={"@Sanity and @Smoke"})
+
+public class Testrunner {
+
+}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite failures="0" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="1" time="45.614592">
+    <testcase classname="Validating Cogmento CRM Login Page" name="Validating username and Password field using Postive TestData's" time="45.614592">
+        <system-out>
+            <![CDATA[Given Verify User is in Cogmento CRM Login Page.............................passed
+When To enter valid username and Password...................................passed
+Then Verify the user Cogmento CRM HomePage..................................passed
+]]>
+        </system-out>
+    </testcase>
+</testsuite>

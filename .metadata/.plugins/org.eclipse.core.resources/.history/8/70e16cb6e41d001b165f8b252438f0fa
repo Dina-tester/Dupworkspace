@@ -1,0 +1,42 @@
+$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("src/test/resources/Features/Login.feature");
+formatter.feature({
+  "name": "Validating Cogmento CRM Login Page",
+  "description": "",
+  "keyword": "Feature"
+});
+formatter.scenario({
+  "name": "Validating username and Password field using Postive TestData\u0027s",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "Verify User is in Cogmento CRM Login Page",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "Stepdefinition.verify_User_is_in_Cogmento_CRM_Login_Page()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "To enter valid username and Password",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "Stepdefinition.to_enter_valid_username_and_Password()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "Verify the user Cogmento CRM HomePage",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "Stepdefinition.verify_the_user_Cogmento_CRM_HomePage()"
+});
+formatter.result({
+  "status": "passed"
+});
+});
